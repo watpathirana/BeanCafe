@@ -16,11 +16,12 @@ export const OrderProvider = ({ children }) => {
       localStorage.setItem("orders", JSON.stringify(updatedOrders));
       return updatedOrders;
     });
+    return true; // Indicate successful addition
   };
 
   const clearOrders = () => {
-    setOrders([]); // Clear the order state
-    localStorage.removeItem("orders"); // Clear orders from local storage
+    setOrders([]);
+    localStorage.removeItem("orders");
   };
 
   return (
@@ -29,3 +30,4 @@ export const OrderProvider = ({ children }) => {
     </OrderContext.Provider>
   );
 };
+
