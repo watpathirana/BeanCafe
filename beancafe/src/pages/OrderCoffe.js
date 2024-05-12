@@ -78,9 +78,11 @@ export default function OrderCoffee() {
     }
   };
 
+  const [orders, setOrders] = useState([]);
+
   return (
     <Container fluid className="px-0">
-      <Navigation />
+      <Navigation orders={orders} />
       <div className="bg-dark text-white text-center py-5 mb-4 banner">
         <div className="bannerTextContainer">
           <h1 className="bannerHeaderText">Welcome to BeanCafe</h1>

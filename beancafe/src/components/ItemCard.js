@@ -1,20 +1,19 @@
-import React from 'react'
-import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
+import React from 'react';
+import { Card, Button } from 'react-bootstrap';
 import '../css/ItemCard.css';
 
-
-export default function ItemCard(props) {
+export default function ItemCard({ item, onAddToOrder }) {
   return (
     <div>
-        <Card>
-            <Card.Img variant="top" className='cardImg' src={props.imageUrl} />
-            <Card.Body>
-                <Card.Title>{props.name}</Card.Title>
-                <Card.Text>{props.description}</Card.Text>
-                <Card.Text className='ItemCardPrice'>Price: Rs.{props.price}</Card.Text>
-                <Button variant="primary">Add to Order</Button>
-            </Card.Body>
-        </Card>
+      <Card>
+        <Card.Img variant="top" className='cardImg' src={item.imageUrl} />
+        <Card.Body>
+          <Card.Title>{item.name}</Card.Title>
+          <Card.Text>{item.description}</Card.Text>
+          <Card.Text className='ItemCardPrice'>Price: Rs.{item.price}</Card.Text>
+          <Button variant="primary" onClick={() => onAddToOrder(item)}>Add to Order</Button>
+        </Card.Body>
+      </Card>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Image } from 'react-bootstrap';
 import {Link, useNavigate} from 'react-router-dom'
 import CustomButton from '../components/CustomButton';
@@ -9,16 +9,18 @@ import '../css/home.css';
 
 export default function Home() {
   const Navigate = useNavigate();
+  const [orders, setOrders] = useState([]);
+
   return (
   
 
     <Container fluid className="px-0">
-      <Navigation />
+      <Navigation orders={orders} />
       <div className="bg-dark text-white text-center py-5 mb-4 banner">
         <div className="bannerTextContainer">
           <h1 className='bannerHeaderText'>Welcome to BeanCafe</h1>
           <p className="lead">Explore our world-class coffee blends and brews.</p>
-          <CustomButton onClick={()=> Navigate("/OrderForm")}>
+          <CustomButton onClick={()=> Navigate("/OrderCoffee")}>
             Order Now
           </CustomButton>
         </div>

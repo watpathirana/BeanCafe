@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 
 import Navigation from '../components/Navigation';
@@ -56,12 +56,21 @@ const menuItems = [
 ];
 
 const Menu = () => {
+
+  const [orders, setOrders] = useState([]);
+
+  const addToOrder = (item) => {
+    setOrders(prevOrders => [...prevOrders, item]);
+    console.log('Current Orders:', orders);  // For debugging
+  };
+
+
   return (
     
     <Container fluid className="px-0">
     
       <div>
-          <Navigation />
+          <Navigation orders={orders} />
           <div className="bg-dark text-white text-center py-5 mb-4 banner">
               <div className="bannerTextContainer">
                   <h1 className='bannerHeaderText'>Welcome to BeanCafe</h1>
@@ -75,7 +84,8 @@ const Menu = () => {
         <Row xs={1} md={2} lg={3} className="g-4">
           {menuItems.map(item => (
             <Col key={item.id}>
-              <ItemCard imageUrl={item.imageUrl} name={item.name} description={item.description} price={item.price}/>
+              {/* <ItemCard imageUrl={item.imageUrl} name={item.name} description={item.description} price={item.price}/> */}
+              <ItemCard item={item} onAddToOrder={addToOrder} />
             </Col>
           ))}
         </Row>
