@@ -4,6 +4,7 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import Navigation from '../components/Navigation';
 import CustomButton from '../components/CustomButton';
 import ItemCard from '../components/ItemCard';
+import { useOrders } from '../context/OrderContext';
 import '../css/menu.css';
 
 
@@ -57,13 +58,13 @@ const menuItems = [
 
 const Menu = () => {
 
-  const [orders, setOrders] = useState([]);
+  //const [orders, setOrders] = useState([]);
+  const { orders, addOrder } = useOrders();
 
-  const addToOrder = (item) => {
-    setOrders(prevOrders => [...prevOrders, item]);
-    console.log('Current Orders:', orders);  // For debugging
-  };
-
+  // const addToOrder = (item) => {
+  //   setOrders(prevOrders => [...prevOrders, item]);
+  //   console.log('Current Orders:', orders);  // For debugging
+  // };
 
   return (
     
@@ -85,7 +86,7 @@ const Menu = () => {
           {menuItems.map(item => (
             <Col key={item.id}>
               {/* <ItemCard imageUrl={item.imageUrl} name={item.name} description={item.description} price={item.price}/> */}
-              <ItemCard item={item} onAddToOrder={addToOrder} />
+              <ItemCard item={item} onAddToOrder={() => addOrder(item)} />
             </Col>
           ))}
         </Row>

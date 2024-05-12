@@ -1,10 +1,12 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'react-bootstrap';
 
-const CustomButton = ({ onClick, children }) => (
-  <Button variant="primary" onClick={onClick}>
-    {children}
-  </Button>
-);
+const CustomButton = ({ children, onClick, ...props }) => {
+  return (
+    <Button onClick={onClick} {...props}>
+      {children}
+    </Button>
+  );
+};
 
 export default CustomButton;

@@ -5,12 +5,14 @@ import CustomButton from '../components/CustomButton';
 import Testimonials from '../components/Testimonials';
 import MainOptionCards from '../components/MainOptionCards';
 import Navigation from '../components/Navigation';
+import { useOrders } from '../context/OrderContext';
 import '../css/home.css';
 
 export default function Home() {
   const Navigate = useNavigate();
-  const [orders, setOrders] = useState([]);
-
+  //const [orders, setOrders] = useState([]);
+  const { orders, addOrder } = useOrders();
+  
   return (
   
 
@@ -20,7 +22,7 @@ export default function Home() {
         <div className="bannerTextContainer">
           <h1 className='bannerHeaderText'>Welcome to BeanCafe</h1>
           <p className="lead">Explore our world-class coffee blends and brews.</p>
-          <CustomButton onClick={()=> Navigate("/OrderCoffee")}>
+          <CustomButton onClick={()=> Navigate("/Menu")}>
             Order Now
           </CustomButton>
         </div>

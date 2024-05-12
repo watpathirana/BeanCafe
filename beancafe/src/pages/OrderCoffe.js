@@ -7,7 +7,9 @@ import {
   Card,
   Button,
   Image,
+  Table,
 } from "react-bootstrap";
+import { useOrders } from "../context/OrderContext"; 
 import CustomButton from "../components/CustomButton";
 import Testimonials from "../components/Testimonials";
 import MainOptionCards from "../components/MainOptionCards";
@@ -78,7 +80,8 @@ export default function OrderCoffee() {
     }
   };
 
-  const [orders, setOrders] = useState([]);
+   //const [orders, setOrders] = useState([]);
+   const { orders, clearOrders } = useOrders();
 
   return (
     <Container fluid className="px-0">
@@ -93,6 +96,35 @@ export default function OrderCoffee() {
       </div>
 
       <Container className="my-4">
+        <h1>Your Orders</h1>
+        {orders.length > 0 ? (
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Item Name</th>
+                <th>Description</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.map((order, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{order.name}</td>
+                  <td>{order.description}</td>
+                  <td>Rs. {order.price}</td>
+                </tr>
+              ))}
+            </tbody>
+            <Button variant="danger" onClick={clearOrders}>
+              Clear Orders
+            </Button>
+          </Table>
+        ) : (
+          <p>No orders yet.</p>
+        )}
+
         <h1>Please submit your details</h1>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicEmail">
@@ -151,7 +183,11 @@ export default function OrderCoffee() {
             </Form.Control.Feedback>
           </Form.Group>
           <br />
-          <CustomButton onClick={() => console.log("Sign up for Coffee Club")}>
+
+          <CustomButton
+            type="submit"
+            onClick={() => console.log("Sign up for Coffee Club")}
+          >
             Order Now
           </CustomButton>
         </Form>

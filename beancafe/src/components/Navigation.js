@@ -11,10 +11,10 @@ const Navigation = ({ orders }) => {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/menu">Menu</Nav.Link>
-            <Nav.Link href="/OrderCoffe">Order Now</Nav.Link>
+            {/* <Nav.Link href="/OrderCoffe">Order Now</Nav.Link> */}
           </Nav>
           <Nav>
-            <Nav.Link href="/OrderCoffee">My Orders <Badge bg="secondary">{orders.length}</Badge></Nav.Link>
+            <Nav.Link href="/OrderCoffe">My Orders <Badge bg="secondary">{orders.length}</Badge></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
