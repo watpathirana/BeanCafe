@@ -1,0 +1,27 @@
+.banner{
+    background-image: url("https://www.roastworks.co.uk/cdn/shop/collections/website_header.jpg?v=1664986619&width=1200");
+    background-size: cover;
+    background-position: center;
+    height: 65vh;
+}
+
+.bannerHeaderText{
+    color: #efff1c;
+}
+
+.bannerTextContainer{
+    margin-top: 200px;
+}
+
+.aboutContainer{
+    background-color: #cead9b;
+}
+
+.joinContainer{
+    background-color: #161712;
+    color: #dbdbdb;
+}
+
+.joinContainerText{
+    margin-bottom: 0px !important;
+}
