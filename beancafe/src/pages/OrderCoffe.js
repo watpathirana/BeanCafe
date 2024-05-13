@@ -83,7 +83,11 @@ export default function OrderCoffee() {
 
    //const [orders, setOrders] = useState([]);
    const { orders, clearOrders } = useOrders();
-
+   
+   // Calculate the total sum of all order totals
+   const orderTotal = orders.reduce((total, order) => {
+     return total + (order.quantity * parseFloat(order.price));
+   }, 0);
   return (
     <Container fluid className="px-0">
       <Navigation orders={orders} />
@@ -106,6 +110,8 @@ export default function OrderCoffee() {
                 <th>Item Name</th>
                 <th>Description</th>
                 <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>
@@ -115,8 +121,14 @@ export default function OrderCoffee() {
                   <td>{order.name}</td>
                   <td>{order.description}</td>
                   <td>Rs. {order.price}</td>
+                  <td>{order.quantity}</td>
+                  <td>Rs. {(order.quantity * parseFloat(order.price)).toFixed(2)}</td>
                 </tr>
               ))}
+              <tr>
+                <td colSpan="5" style={{ textAlign: 'right' }}><strong>Total:</strong></td>
+                <td><strong>Rs. {orderTotal.toFixed(2)}</strong></td>
+              </tr>
             </tbody>
 
           </Table>

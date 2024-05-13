@@ -107,7 +107,7 @@ const Menu = () => {
           justifyContent: 'center',
           pointerEvents: 'none',
           zIndex: 1050 }}>
-        <Toast show={showToast} onClose={() => setShowToast(false)} delay={300000} autohide className={`${toastType}-toast`} style={{
+        <Toast show={showToast} onClose={() => setShowToast(false)} delay={3000} autohide className={`${toastType}-toast`} style={{
             minWidth: '300px',
             maxWidth: '600px',
             width: '300px',
