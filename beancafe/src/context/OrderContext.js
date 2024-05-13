@@ -11,6 +11,7 @@ export const OrderProvider = ({ children }) => {
   });
 
   const addOrder = (item) => {
+    alert("Item added to cart successfully!"); 
     setOrders((prevOrders) => {
       const updatedOrders = [...prevOrders, item];
       localStorage.setItem("orders", JSON.stringify(updatedOrders));

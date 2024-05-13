@@ -14,6 +14,7 @@ import CustomButton from "../components/CustomButton";
 import Testimonials from "../components/Testimonials";
 import MainOptionCards from "../components/MainOptionCards";
 import Navigation from "../components/Navigation";
+import '../css/OrderCoffe.css';
 
 export default function OrderCoffee() {
   const [formData, setFormData] = useState({
@@ -117,13 +118,16 @@ export default function OrderCoffee() {
                 </tr>
               ))}
             </tbody>
-            <Button variant="danger" onClick={clearOrders}>
-              Clear Orders
-            </Button>
+
           </Table>
         ) : (
           <p>No orders yet.</p>
         )}
+        <div className="AllignRight">
+          <Button variant="danger" onClick={clearOrders}>
+            Clear Orders
+          </Button>
+        </div>
 
         <h1>Please submit your details</h1>
         <Form onSubmit={handleSubmit}>
