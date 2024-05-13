@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Card, Button, Container, Row, Col, Toast, ToastContainer } from 'react-bootstrap';
 
 import Navigation from '../components/Navigation';
 import CustomButton from '../components/CustomButton';
@@ -58,13 +58,16 @@ const menuItems = [
 
 const Menu = () => {
 
-  //const [orders, setOrders] = useState([]);
+ 
   const { orders, addOrder } = useOrders();
+  const [showToast, setShowToast] = useState(false);
+  const [toastType, setToastType] = useState('success');
 
-  // const addToOrder = (item) => {
-  //   setOrders(prevOrders => [...prevOrders, item]);
-  //   console.log('Current Orders:', orders);  // For debugging
-  // };
+  const handleAddToOrder = (item) => {
+    addOrder(item);
+    setShowToast(true);  // Show toast upon adding an item
+    setTimeout(() => setShowToast(false), 3000);  // Hide toast after 3 seconds
+  };
 
   return (
     
@@ -86,12 +89,36 @@ const Menu = () => {
           {menuItems.map(item => (
             <Col key={item.id}>
               {/* <ItemCard imageUrl={item.imageUrl} name={item.name} description={item.description} price={item.price}/> */}
-              <ItemCard item={item} onAddToOrder={() => addOrder(item)} />
+              <ItemCard item={item} onAddToOrder={() => handleAddToOrder(item)} />
             </Col>
           ))}
         </Row>
       </Container>
       
+
+      {/* Toast Container */}
+      <ToastContainer className="p-3" position="top-center" style={{width: '100vw',
+          height: '100vh',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          pointerEvents: 'none',
+          zIndex: 1050 }}>
+        <Toast show={showToast} onClose={() => setShowToast(false)} delay={300000} autohide className={`${toastType}-toast`} style={{
+            minWidth: '300px',
+            maxWidth: '600px',
+            width: '300px',
+            pointerEvents: 'auto'
+        }}>
+          <Toast.Header closeButton={false} className={`${toastType}-toast`}>
+            <strong className="me-auto">BeanCafe</strong>
+          </Toast.Header>
+          <Toast.Body>Added to cart successfully!</Toast.Body>
+        </Toast>
+      </ToastContainer>
 
     {/* Call to Action Section */}
     <div className='joinContainer'>

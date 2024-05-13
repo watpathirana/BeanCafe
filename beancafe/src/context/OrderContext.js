@@ -23,7 +23,7 @@ export const OrderProvider = ({ children }) => {
         alert('Cart is Empty!');
       }
       else{
-        alert(`Item added to cart successfully! You now have ${orders.length} items in your cart.`);
+        //alert(`Item added to cart successfully! You now have ${orders.length} items in your cart.`);
       }
     }
   }, [orders]); // This effect runs every time 'orders' changes

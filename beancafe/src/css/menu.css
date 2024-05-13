@@ -10,3 +10,28 @@
     width: 100%;
     height: 350px;
 }
+
+.success-toast {
+    background-color: green;
+    /* Bootstrap green */
+    color: white;
+}
+
+.error-toast {
+    background-color: #dc3545;
+    /* Bootstrap red */
+    color: white;
+}
+
+.info-toast {
+    background-color: #17a2b8;
+    /* Bootstrap info blue */
+    color: white;
+}
+
+.warning-toast {
+    background-color: #ffc107;
+    /* Bootstrap yellow */
+    color: black;
+    /* Ensuring readability */
+}
